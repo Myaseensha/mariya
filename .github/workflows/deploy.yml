@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -36,5 +37,19 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # If Pages "Source" is still "Deploy from a branch", GitHub also publishes the raw
+      # source (blank page). Wait for that run to finish so the real build lands last.
+      - name: Wait for GitHub's branch publish to finish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 36); do
+            s=$(gh api "repos/${{ github.repository }}/actions/runs?head_sha=${{ github.sha }}&per_page=50" \
+              --jq '[.workflow_runs[] | select(.name=="pages build and deployment")] | .[0].status // "none"')
+            echo "branch publish status: $s"
+            if [ "$s" = "completed" ]; then break; fi
+            if [ "$s" = "none" ] && [ "$i" -ge 6 ]; then break; fi
+            sleep 10
+          done
       - id: deployment
         uses: actions/deploy-pages@v4
