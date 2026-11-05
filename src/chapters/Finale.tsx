@@ -90,9 +90,9 @@ export function Finale({ onReplay }: { onReplay: () => void }) {
         >
           <AnimatePresence mode="wait">
             <motion.img
-              key={portraitFlip ? 'sun' : 'halo'}
-              src={portraitFlip ? PHOTOS.sunflower : PHOTOS.magentaHalo}
-              alt={portraitFlip ? 'Mariya in sunflowers' : 'Mariya in soft pink light'}
+              key={portraitFlip ? 'cream' : 'sun'}
+              src={portraitFlip ? PHOTOS.creamNavy : PHOTOS.sunflower}
+              alt={portraitFlip ? 'Mariya in cream light' : 'Mariya smiling in a sunflower field'}
               initial={{ opacity: 0, scale: 1.06 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
