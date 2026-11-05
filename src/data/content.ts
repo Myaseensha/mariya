@@ -1,12 +1,14 @@
+const photo = (file: string) => `${import.meta.env.BASE_URL}photos/${file}`;
+
 export const PHOTOS = {
-  sunflower: '/photos/23dee643-5d45-45e6-a26f-88aad43443b7.jpg',
-  magentaHalo: '/photos/7578073e-0db0-4cd0-b187-631b669dce64.jpg',
-  carMagenta: '/photos/9134f68c-0ce1-40af-87b8-9dea447f06fe.jpg',
-  hotPink: '/photos/5f47242c-1f33-4aab-9825-866a66a18b7c.jpg',
-  brownHearts: '/photos/f6835292-f6cf-4714-a82c-8b32b44d0bd2.jpg',
-  peaceSign: '/photos/3d0fddef-fa7f-4c03-accb-fbba1135cd3f.jpg',
-  creamNavy: '/photos/b5e4b4d6-1593-49b9-905f-13bdbf25b522.jpg',
-  softTeal: '/photos/3f338826-3e10-4be3-a344-0cb1fd1861ec.jpg',
+  sunflower: photo('23dee643-5d45-45e6-a26f-88aad43443b7.jpg'),
+  magentaHalo: photo('7578073e-0db0-4cd0-b187-631b669dce64.jpg'),
+  carMagenta: photo('9134f68c-0ce1-40af-87b8-9dea447f06fe.jpg'),
+  hotPink: photo('5f47242c-1f33-4aab-9825-866a66a18b7c.jpg'),
+  brownHearts: photo('f6835292-f6cf-4714-a82c-8b32b44d0bd2.jpg'),
+  peaceSign: photo('3d0fddef-fa7f-4c03-accb-fbba1135cd3f.jpg'),
+  creamNavy: photo('b5e4b4d6-1593-49b9-905f-13bdbf25b522.jpg'),
+  softTeal: photo('3f338826-3e10-4be3-a344-0cb1fd1861ec.jpg'),
 } as const;
 
 export type ChapterId =
